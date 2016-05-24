@@ -1,11 +1,5 @@
-MEAN_ejemplo
-============
-
-Sencillo ejemplo de una aplicación hecha en MEAN (Mongo-Express-Angular-Node)
-
-Para poder ejecutar este proyecto teneis que:
-  1.- Instalar MongoDB
-  2.- Instalar express
-  3.- Instalar NodeJS
-
-Se recomienda ejecutar este proyecto en un Linux o Unix ya que la instalación de MongoDB y sobre todo de Express y NodeJS en un Sistema Operativo Windows es bastante tediosa.
+﻿-Crea subjects
+-Mostra subjects amb nom i llista de id de usuaris
+-Crea usuaris
+-Pot ficar usuaris creats a una assignatura
+-Al clicar sobre id hauria de mostrar dades d'usuari pero surt un error de format, les funcions diria que estan be pero no localitzo el perque no els mostra

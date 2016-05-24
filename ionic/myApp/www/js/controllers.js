@@ -34,8 +34,10 @@ angular.module('starter.controllers', [])
     });
 
   $scope.GetStudent =function(studentid){
-  $http.get(ApiEndpoint.url+'/student/'+$scope.studentid).success(function(data) {
+
+  $http.get(ApiEndpoint.url+'/student/'+studentid).success(function(data) {
       $scope.student2 = data;
+    console.log($scope.student2);
     })
     .error(function(data) {
       console.log('Error: ' + data);
