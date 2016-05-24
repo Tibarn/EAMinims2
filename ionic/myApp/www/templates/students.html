@@ -1,0 +1,28 @@
+<ion-view view-title="Students">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="student in students" ng-click="selectStudent(student)"  >
+        {{student.name}}
+        {{student.address}}
+        {{student.phone.home}}
+      </ion-item>
+    </ion-list>
+
+  <ion-form name="myForm">
+    <div class="form-group">
+      <input type="text" class="form-control input-lg text-center" placeholder="Name Student" ng-model="newStudent.name" required>
+      <br>
+      <input type="text" class="form-control input-lg text-center" placeholder="Address" ng-model="newStudent.address" required>
+      <br>
+      <input type="number" class="form-control input-lg text-center" placeholder="Home Phone" ng-model="newStudent.phone.home" required>
+      <br>
+      <input type="number" class="form-control input-lg text-center" placeholder="Work Phone" ng-model="newStudent.phone.work" required>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-lg" ng-click="registrarStudent()" ng-disabled="myForm.$invalid || selected">Sign up</button>
+    <button type="submit" class="btn btn-warning btn-lg" ng-click="modificarStudent(newStudent)" ng-disabled="!newStudent.name || !newStudent.address || |newStudent.phone.home || !newStudent.phone.work || !selected">Modify</button>
+    <button type="submit" class="btn btn-danger btn-lg" ng-click="borrarStudent(newStudent)" ng-disabled="!newStudent.name || !newStudent.address || |newStudent.phone.home || !newStudent.phone.work || !selected">Erase</button>
+  </ion-form>
+  </ion-content>
+</ion-view>

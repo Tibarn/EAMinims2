@@ -1,0 +1,142 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="MainApp"  >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ejemplo MEAN</title>
+	<!-- Cargamos bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- Cargamos angular -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<!-- Cargamos el javascript de angular -->
+	<script src="core.js"></script>
+    <script src="core2.js"></script>
+
+
+</head>
+<body  >
+	
+ 
+  <div class="container" ng-controller="mainController" >
+      
+
+		<div class="jumbotron text-center" >
+              <h1>Students: <span class="label label-success">{{}}</span></h1>
+			
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-1">
+				<table class="table table-striped">
+					<tr class="info">
+						<td>Name</td>
+						<td>Address</td>
+						<td>Home phone</td>
+                        <td>Work phone</td>
+					</tr>
+					<tr ng-repeat="student in students" ng-click="selectStudent(student)">
+						<td>{{ student.name }}</td>
+                        <td>{{ student.address }}</td>
+                        <td>{{ student.phone.home }}</td>
+                        <td>{{ student.phone.work }}</td>
+												
+					</tr>
+				</table>					
+			</div>
+			<div class="col-sm-4 col-sm-offset-1 text-center">
+				<form name="myForm">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg text-center" placeholder="Name Student" ng-model="newStudent.name" required>
+						<br>
+						<input type="text" class="form-control input-lg text-center" placeholder="Address" ng-model="newStudent.address" required>
+						<br>
+						<input type="number" class="form-control input-lg text-center" placeholder="Home Phone" ng-model="newStudent.phone.home" required>
+                        	<br>
+						<input type="number" class="form-control input-lg text-center" placeholder="Work Phone" ng-model="newStudent.phone.work" required>
+					</div>
+
+					
+					<button type="submit" class="btn btn-success btn-lg" ng-click="registrarStudent()" ng-disabled="myForm.$invalid || selected">Sign up</button>
+					<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarStudent(newStudent)" ng-disabled="!newStudent.name || !newStudent.address || |newStudent.phone.home || !newStudent.phone.work || !selected">Modify</button>
+					<button type="submit" class="btn btn-danger btn-lg" ng-click="borrarStudent(newStudent)" ng-disabled="!newStudent.name || !newStudent.address || |newStudent.phone.home || !newStudent.phone.work || !selected">Erase</button>
+				</form>
+			</div>
+		</div>
+	</div>
+    
+    
+    
+    <div class="container"  ng-controller="mainController2" >
+
+		<div class="jumbotron text-center" >
+			<h1>Number of Subjects: <span class="label label-success">{{ subjects.length }}</span></h1>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-1">
+				<table class="table table-striped">
+					<tr class="info">
+						<td>Name</td>
+						
+					</tr>
+					<tr ng-repeat="subject in subjects" ng-click="selectSubject(subject)">
+						<td>{{ subject.name }}</td>
+                        </tr>
+				</table>
+                
+                 <table class="table table-striped">
+					<tr class="info">
+						<td>Student ID</td>
+						
+					</tr>
+					<tr ng-repeat="student in newSubject.students " ng-click="selectID(student)" >
+						<td>{{ student }} </td>
+                        </tr>
+				</table>
+                
+                   <table class="table table-striped">
+					<tr class="info">
+						<td>Student Name</td>
+                        <td>Student Address</td>
+                        <td>Home Phone</td>
+                        <td>Work Phone</td>
+						
+					</tr>
+					<tr >
+						<td>{{ studentid.name }}</td>
+                        <td>{{ studentid.address }}</td>
+                        <td>{{ studentid.phone.home }}</td>
+                        <td>{{ studentid.phone.work }}</td>
+                        </tr>
+				</table>
+                
+			</div>
+			<div class="col-sm-4 col-sm-offset-1 text-center">
+                
+				<form name="myForm2">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg text-center" placeholder="Name Subject" ng-model="newSubject.name" required>
+                        <input type="text" class="form-control input-lg text-center" placeholder="New Student" ng-model="newSubject.students">
+                       <br>
+					
+					</div>
+
+					
+					<button type="submit" class="btn btn-success btn-lg" ng-click="registrarSubject()" ng-disabled="myForm2.$invalid || selected2">Sign up</button>
+				<button type="submit" class="btn btn-warning btn-lg" ng-click="modificarSubject(newSubject)" ng-disabled="!newSubject.students || !selected2">Add Student</button>
+					<button type="submit" class="btn btn-danger btn-lg" ng-click="borrarSubject(newSubject)" ng-disabled="!newSubject.name  || !selected2">Erase</button>
+				</form>
+                
+               		
+               	
+                
+                
+			</div>
+		</div>
+	</div>
+    
+    
+</body>
+</html>

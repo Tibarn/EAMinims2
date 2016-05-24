@@ -1,0 +1,43 @@
+<ion-view view-title="Subjects">
+  <ion-content>
+    <h1>Subjects</h1>
+
+    <label>Search: <input ng-model="searchText"></label>
+    <ion-list>
+      <ion-item ng-repeat="subject in subjects| filter:searchText" ng-click="selectSubject(subject)">
+        {{subject.name}}
+      </ion-item>
+    </ion-list>
+
+    <form name="myForm2">
+      <div class="form-group">
+        <input type="text" class="form-control input-lg text-center" placeholder="Name Subject" ng-model="newSubject.name" required>
+        <input type="text" class="form-control input-lg text-center" placeholder="New Student" ng-model="newSubject.students">
+        <br>
+
+      </div>
+
+
+
+      <ion-list>
+        <ion-item ng-repeat="student in newSubject.students" ng-click="GetStudent(stringifyObject(student))" >{{ student }}
+        </ion-item>
+      </ion-list>
+
+
+      <button type="submit" class="btn btn-success btn-lg" ng-click="registrarSubject()" ng-disabled="myForm2.$invalid || selected2">Sign up</button>
+      <button type="submit" class="btn btn-warning btn-lg" ng-click="modificarSubject(newSubject)" ng-disabled="!selected2">Add Student</button>
+      <button type="submit" class="btn btn-danger btn-lg" ng-click="borrarSubject(newSubject)" ng-disabled="!newSubject.name  || !selected2">Erase</button>
+    </form>
+    <ion-list>
+
+        {{student2.name}}
+        {{student2.address}}
+        {{student2.phone.home}}
+
+    </ion-list>
+
+
+
+  </ion-content>
+</ion-view>
